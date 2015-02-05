@@ -43,7 +43,7 @@ activities <- read.table("./data/UCI HAR Dataset/activity_labels.txt", header = 
 data$Activity <- factor(data$Activity, levels = activities[, 1], labels = activities[, 2])
 
 ## Step 5: From the data set in step 4, create a second, independent tidy data set with the average of each variable for each activity and each subject. 
-data2 <- aggregate(. ~Subject + Activity, mergedData, mean)
+data2 <- aggregate(. ~Subject + Activity, data, mean)
 data2 <- data2[order(data2$Subject,data2$Activity),]
 write.table(data2, file = "tidydata.txt", row.names=FALSE)
 
